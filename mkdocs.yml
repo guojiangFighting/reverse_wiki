@@ -1,0 +1,46 @@
+site_name: reverse_wiki
+site_description: 实践驱动的逆向知识库
+repo_url: https://github.com/guojiangFighting/reverse_wiki
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - search.highlight
+    - content.code.copy
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+nav:
+  - 首页: index.md
+  - 学习路线:
+      - 总览（已确认）: curriculum/index.md
+      - 主教材阅读计划: curriculum/reading-plan.md
+      - 阶段 0 基础: curriculum/phase-00-foundation.md
+      - 阶段 1 工具: curriculum/phase-01-tools.md
+      - 阶段 2 PE: curriculum/phase-02-pe.md
+      - 阶段 3 ELF: curriculum/phase-03-elf.md
+      - 阶段 4 ARM: curriculum/phase-04-arm.md
+      - 阶段 5 加壳与算法: curriculum/phase-05-pack-crypto.md
+      - 阶段 6 恶意软件通论: curriculum/phase-06-malware.md
+      - 阶段 7 固件与 IoT: curriculum/phase-07-firmware-iot.md
+      - 阶段 8 托管与文档: curriculum/phase-08-managed.md
+      - 阶段 9 流量: curriculum/phase-09-network.md
+      - 阶段 10 沉淀: curriculum/phase-10-wiki.md
+  - 元规则:
+      - 分类: 00-meta/taxonomy.md
+      - 案例模板: 00-meta/template-case.md
+      - 手法模板: 00-meta/template-method.md
+      - 实验环境: 00-meta/lab-setup.md
+  - 手法: methods/index.md
+  - 业务:
+      - 窃密: stealers/index.md
+      - Botnet: botnet/index.md
+      - RAT: rat/index.md
+      - Loader: loaders/index.md
+      - 固件问题: firmware-rce/index.md
+  - 家族索引: families/index.md
