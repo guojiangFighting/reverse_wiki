@@ -2,26 +2,20 @@
 
 ## 知识点
 
-DOS/NT 头、节区、入口、导入/导出、TLS、资源；32/64 位差异；与阶段 0 调用约定合拢。
+- DOS/NT 头、节区、入口、特征
+- 导入表：DLL 与 API 列表的意义
+- 入口落在哪个节；正常 PE 长什么样
+- （可选）TLS、资源目录的存在即可，细节卡住再查第11章
 
-## 书
+## 实操
 
-| 资源 | 说明 |
-|------|------|
-| **《加密与解密》第11章 PE** | 主教材，字段级 |
-| 同书第5章 | 只读保护机制，配合 crackme 找比较点 |
-| [Microsoft PE 格式](https://learn.microsoft.com/en-us/windows/win32/debug/pe-format) | 与第11章对照的字典 |
+1. 对自己的 exe：DIE + Ghidra 或 PE-bear，画出节区表和导入。
+2. [crackmes.one](https://crackmes.one/)：Windows、难度 1、无恶意标签，做 **1 道**。只要求说明校验从哪进、和什么比。
+3. 机制对照可扫书第5章标题，不要求做注册机。
 
-## 博客
+## 掌握确认
 
-- [hasherezade](https://www.youtube.com/@hasherezade) / 其 GitHub 工具说明（PE 结构可视化）
-- Hex-Rays / HexRaysGhidra 博客里 Windows 示例（有则看）
-
-## 然后实操站点
-
-- [crackmes.one](https://crackmes.one/) 过滤：Windows、难度 1–2、无恶意
-- [reversing.kr](http://reversing.kr/) 入门题
-- [Root-Me](https://www.root-me.org/) Cracking 区 Windows 题
-- 进阶季节性： [FLARE-ON](https://flare-on.com/) 往年 writeup 对照自己做（先读规则）
-
-**笔记**：`methods/pe-triage.md` + 至少 1 道 crackme 案例（校验逻辑，不发布 keygen）。
+- [ ] 能手写：Machine、节区名、入口节、3 个关键导入
+- [ ] 能判断「像不像加壳」（有依据，哪怕结论是未加壳）
+- [ ] crackme：能指出比较点（cmp/memcmp/字符串）
+- [ ] `docs/methods/pe-triage.md` 一页

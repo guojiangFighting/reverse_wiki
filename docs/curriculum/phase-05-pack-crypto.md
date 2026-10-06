@@ -1,27 +1,22 @@
-# 阶段 5：加壳、混淆、算法识别
+# 阶段 5：加壳与算法识别
 
 ## 知识点
 
-高熵节、入口不在 .text、导入表异常；UPX 对照；XOR/Base64；哈希/AES 常量识别。识别 ≠ 攻击。
+- packed 启发式：异常节名、高熵、入口不在 .text、导入很少
+- UPX 对照：加壳前后差异
+- XOR 循环、Base64 表、MD5/SHA IV、AES S-box
+- 识别算法和「会不会破解」不是一回事
 
-## 书
+## 实操
 
-| 资源 | 说明 |
-|------|------|
-| **《加密与解密》第6章** | 哈希/对称/RSA 与 6.5 库识别 |
-| **第15章、第16章 16.1–16.2、16.8.1 UPX** | 先认壳与 UPX，再考虑更深脱壳 |
-| 第18章 | 选读，常见反跟踪清单 |
+1. 对自己的 exe/elf 做官方 UPX，DIE + 节区对比未加壳版本。
+2. 写两个小程序：XOR 缓冲区；调用 SHA256 或 MD5。Ghidra 里不看源码标出来。
+3. 可选：crackmes 带 packer 标签的入门题只做识别。
 
-## 博客
+卡壳查书第6、15、16.1、16.8.1。
 
-- hasherezade 关于 PE 与壳的文章
-- OALabs unpacking 系列（看思路，跟工具版本）
-- 算法常量：搜 “RTTI / crypto constants in IDA Ghidra”（FindCrypt 类插件说明）
+## 掌握确认
 
-## 然后实操
-
-- **自己**对 hello 做 `upx` 再对比（合法、可重复）
-- crackmes.one 带 packer 标签的入门题
-- FLARE-ON 往年较简单的编码题（对照 writeup）
-
-**笔记**：`methods/packer-id.md`、`methods/crypto-id.md`。本阶段不要求写通用脱壳器。
+- [ ] 三列表：未加壳 / UPX /（可选）其他，节区与 DIE
+- [ ] 能指出 XOR 循环或哈希常量/库调用
+- [ ] `docs/methods/packer-id.md` 与 `crypto-id.md`（可合并一页）

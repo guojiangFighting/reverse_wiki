@@ -1,14 +1,19 @@
-# 阶段 10：沉淀进知识库
+# 阶段 10：沉淀
 
-## 做什么
+## 知识点
 
-把前几阶段 `lab-log` 升为 `docs/methods/` 与业务案例。知识库不是收藏夹。
-
-## 「优质资料」怎么用在这一步
-
-写案例时引用：Malpedia、厂商报告、你读过的书章节号。不复制整章。
+- lab-log 是草稿；`docs/methods` 是可复用清单
+- 案例必须标明已动手 / 仅文献
+- 跨类家族只写一份正文 + families 索引
 
 ## 实操
 
-- 每月：升级至少 1 篇手法、更新 [families/index.md](../families/index.md)
-- 完成标准见 [案例模板](../00-meta/template-case.md) / [手法模板](../00-meta/template-method.md)
+1. 打开超过 7 天的 lab-log，能复用的升到 methods。
+2. 更新 `families/index.md` 哪怕只有一行。
+3. 每月重复一次。
+
+## 掌握确认
+
+- [ ] 本月至少 1 篇手法别人能按步骤做（不含 exploit）
+- [ ] 案例页有反链到手法
+- [ ] 过期笔记已标或删除

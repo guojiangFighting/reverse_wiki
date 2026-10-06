@@ -1,30 +1,21 @@
-# 阶段 7：固件与 IoT Botnet
+# 阶段 7：固件与 IoT
 
 ## 知识点
 
-固件镜像布局、squashfs 等文件系统、BusyBox、启动脚本、路由器上的 Web/服务二进制；Mirai 谱系是 **Linux ELF + 弱服务面**，与 Windows 窃密不是同一套工具。
+- 固件是镜像：内核、rootfs、bootloader 可能拼在一个文件
+- squashfs/jiffs 等解出后就是 Linux 根文件系统
+- 启动脚本 → 服务 ELF（httpd 等）
+- IoT bot（Mirai 谱系）是 ELF + 暴露服务，与 Windows 窃密工具链不同
 
-## 书
+## 实操
 
-| 资源 | 说明 |
-|------|------|
-| *The IoT Hacker’s Handbook*（Aditya Gupta 等） | 固件与 IoT 分析通论 |
-| *Practical IoT Hacking* | 偏实践，选固件章节 |
-| 阶段 3–4 的 ELF/ARM 书 | 这里会反复用到 |
+1. **官方站点**下一份家用路由固件，`binwalk` 先看签名再提取。
+2. 列出 `/etc/init.d` 或等价启动链中的一个服务，`file` 看 ARM/MIPS。
+3. Ghidra 打开该 ELF，找到 main 或 `bind`/`socket` 引用（能到哪写到哪）。
+4. 读一篇 Mirai/Mozi **厂商或论文**，填「C2 形态 / 设备类型」表。不编译传播模块。
 
-## 博客 / 论文（优质、可引用）
+## 掌握确认
 
-- [Azeria / 嵌入式与 ARM](https://azeria-labs.com/)
-- 360 Netlab 对 Mozi 等的公开分析（防御向）
-- Microsoft 关于 Mozi 的防御博客
-- Mirai 原始论文：Antonakakis et al., *Understanding the Mirai Botnet*（USENIX）
-- 厂商安全公告（如 D-Link SAP）只作版本与组件对照
-
-## 然后实操站点 / 对象
-
-- **官方固件下载站**（首选实操对象，不是漏洞利用平台）
-- [DVRF](https://github.com/praetorian-inc/DVRF)（路由器漏洞研究练习靶，在隔离网；本 wiki 只写分析与加固理解，不写 PoC）
-- OWASP IoT 相关项目（Goat 等，按官方文档做）
-- 学术数据集哈希对照（如 Tangled IoT 论文配套，**不把样本推进 git**）
-
-**笔记**：`methods/firmware-unpack.md` + `firmware-rce/<型号-版本>.md` + `botnet/iot-embedded/mirai-lineage.md`。
+- [ ] 有官方 URL + 版本 + binwalk 关键行解读
+- [ ] 能指出一个服务的路径与架构
+- [ ] `methods/firmware-unpack.md` + `firmware-rce/<型号>.md` 或 `botnet/iot-embedded/` 谱系提纲

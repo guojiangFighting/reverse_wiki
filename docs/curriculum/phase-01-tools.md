@@ -1,28 +1,22 @@
-# 阶段 1：工具链
+# 阶段 1：工具
 
 ## 知识点
 
-项目/导入、自动分析、反编译窗口、重命名与类型；调试器：断点、单步、内存/寄存器。静态为主、动态为辅。
+- Ghidra：工程、导入、Analyze、Symbol Tree、Listing、Decompiler
+- 改名、改类型、交叉引用是分析本身
+- 调试器：软件断点、单步、寄存器、栈、内存窗口
+- 静态先定位，动态验证比较点
 
-## 书 / 官方课
+## 实操
 
-| 资源 | 说明 |
-|------|------|
-| **《加密与解密》第2章、第3章** | 主教材：动态/静态工作流 |
-| [Ghidra 官方文档](https://ghidra-sre.org/) | 用第3.3节 IDA 操作清单在 Ghidra 复做 |
-| [x64dbg 文档](https://help.x64dbg.com/) | 对应书 2.2；2.1 Olly 只浏览 |
-| GDB / gef | 阶段 3 再用 |
+1. 用阶段 0 的程序建 Ghidra 工程，从 entry 找到 `foo`/`main`。
+2. 给函数和关键局部变量改名。
+3. x64dbg 加载同一程序，在 `foo` 入口下断，看参数寄存器/栈。
+4. 卡操作再对照书第2–3章或 [Ghidra 文档](https://ghidra-sre.org/)、[x64dbg](https://help.x64dbg.com/)。
 
-## 博客 / 视频课
+## 掌握确认
 
-- [OALabs](https://www.youtube.com/@OALabs) Ghidra/x64dbg 工作流（质量稳定）
-- [MalwareUnicorn RE101](https://malwareunicorn.org/workshops) 免费工作坊
-- [begin.re](https://www.begin.re/) 入门路径图
-
-## 然后实操
-
-- Ghidra 自带 `docs`/教程程序（安装目录下的 example）
-- MalwareUnicorn 工作坊配套练习
-- 仍用**自己编译的程序**练断点，不上野生样本
-
-**笔记**：`methods/ghidra-first.md`、`methods/user-debug.md`
+- [ ] 不靠别人提示能导入并找到目标函数
+- [ ] 会用 xref 从字符串或 call 跳到函数
+- [ ] 调试器能在指定函数停下并看到参数
+- [ ] `docs/methods/ghidra-first.md` 或 `user-debug.md` 写出你的点击路径（自己的话）

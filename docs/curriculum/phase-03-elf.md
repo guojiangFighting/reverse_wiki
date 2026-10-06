@@ -2,26 +2,22 @@
 
 ## 知识点
 
-ELF 头、Program Header vs Section、动态链接、GOT/PLT、strip、解释器。
+- ELF class、endian、interpreter、NEEDED
+- 段（加载）vs 节（链接）
+- GOT/PLT 是动态调用的路标
+- strip 后如何用字符串和 libc 调用找回逻辑
 
-## 书 / 长文
+## 实操
 
-| 资源 | 说明 |
-|------|------|
-| 《程序员的自我修养》ELF 章 | 中文首选 |
-| [System V ABI / ELF 规范](https://refspecs.linuxfoundation.org/) | 查字段 |
-| Practical Reverse Engineering 中 ARM/x86 与 Linux 示例 | 有则读对应节 |
+1. 自己编译 ELF，`file`/`readelf -h -d -s`，再 strip 一份对比。
+2. Ghidra 打开 strip 后的文件，靠字符串 xref 找回校验或主逻辑。
+3. [crackmes.one](https://crackmes.one/) Linux 入门 **1 道**，或 picoCTF Reverse 一题。
 
-## 博客
+卡链接概念再翻《程序员的自我修养》装载章。
 
-- [LWN 等对 ELF/加载器的解释文](https://lwn.net/) 按需搜 `ELF loading`
-- GDB/gef 作者博客（动态看 GOT）
+## 掌握确认
 
-## 然后实操站点
-
-- [crackmes.one](https://crackmes.one/) Linux ELF
-- [pwnable.kr](https://pwnable.kr/) 里偏 reverse 的入门题（注意与 pwn 题区分，先做 reverse）
-- [Root-Me](https://www.root-me.org/) ELF 相关
-- PicoCTF 往年 Reverse 题：https://picoctf.org/
-
-**笔记**：`methods/elf-triage.md`；strip 前后对比必须写。
+- [ ] 能报出 class、interpreter、至少一个 NEEDED
+- [ ] 能说明 strip 少了什么、你靠什么当路标
+- [ ] 无符号仍能找到比较/校验函数
+- [ ] `docs/methods/elf-triage.md`

@@ -18,8 +18,8 @@ markdown_extensions:
 nav:
   - 首页: index.md
   - 学习路线:
-      - 总览（已确认）: curriculum/index.md
-      - 主教材阅读计划: curriculum/reading-plan.md
+      - 总览: curriculum/index.md
+      - 书本查阅（可选）: curriculum/reading-plan.md
       - 阶段 0 基础: curriculum/phase-00-foundation.md
       - 阶段 1 工具: curriculum/phase-01-tools.md
       - 阶段 2 PE: curriculum/phase-02-pe.md
