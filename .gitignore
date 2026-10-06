@@ -26,6 +26,21 @@
 *.vmem
 samples/
 !docs/**/*.md
+!labs/**/*.exe
+
+# 本机编译器（不入库）
+tools/
+
+# Ghidra 工程库（本机分析产物）
+*.id0
+*.id1
+*.id2
+*.nam
+*.til
+*.idb
+*.i64
+*.ghidra
+*.rep/
 
 # 密钥与本地
 .env
